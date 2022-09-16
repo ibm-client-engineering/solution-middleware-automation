@@ -1,23 +1,59 @@
 <h1>IBM Client Engineering - Solution Document</h1>
 
-<h2>Solution Name</h2>
+> **Note**
+> :mega:
+> This is a Client Engineering engagement that is currently in progress.
+> As we _'work in the open'_, details and solution design is subject to change.
+
+<h2>Automating IBM Middleware IT Operations using Ansible</h2>
 <img align="right" src="https://user-images.githubusercontent.com/95059/166857681-99c92cdc-fa62-4141-b903-969bd6ec1a41.png" width="491" >
 
+- [Background and Business Problem](#background-and-business-problem)
+    - [Use Cases:](#use-cases)
+- [Solution Overview](#solution-overview)
+  - [Building Block View](#building-block-view)
+  - [Solution Deployment](#solution-deployment)
+    - [MQ Cert Management](#mq-cert-management)
+    - [Requirements for the role](#requirements-for-the-role)
+    - [Role Tasks and Variables](#role-tasks-and-variables)
+    - [Dependencies](#dependencies)
+    - [Playbook Example](#playbook-example)
+    - [Variables](#variables)
+- [Security](#security)
+- [Cost](#cost)
+- [Risks and Technical Debts](#risks-and-technical-debts)
+- [Testing](#testing)
+- [Architecture Decisions](#architecture-decisions)
 
-# Introduction and Goals
+# Background and Business Problem
+A valued Financial Services customer has approached IBM Client Engineering to formulate a point of view on **automating** manual IT Operations tasks for their IBM middleware landscape. Today, these manual tasks can be error-prone and time consuming.
+### Use Cases:
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
+- **Certificate Management:**
+Automate the manual workflow of certificate management across the customer's IBM MQ footprint.
+![image](https://user-images.githubusercontent.com/95059/190799946-d6ebfa22-1b29-4d2d-a6ae-cf94a2b576a7.png)
 
-## Background and Business Problem
+# Solution Overview
 
+After gathering data on all the use-cases, this solution will use Ansible as the primary driver for automating operations.
+![image](https://user-images.githubusercontent.com/95059/190798762-1aa5b297-dab9-420d-8e38-5743eab10d3a.png)
 
-# Solution Strategy
-
-## Overview
-
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
 ## Building Block View
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
 
-## Deployment
+## Solution Deployment
 
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) This is a work in progress and the solution details are subject to change as the engagement progresses.
 ### MQ Cert Management
+
+> **Warning**
+> To prove Ansible's capability to solve the customer's use case, IBM Client Engineering > has built the following Ansible Role for demo purposes. This code and structure is
+> going to evolve and change as the engagement progresses.
 
 This role allows for simple certificate management in the local keystore on each node of MQ. This works for any RDQM cluster or standalone MQ host.
 
@@ -125,7 +161,7 @@ Tags: `getpubcert`
 
 **Task:** `mq-remove-pub-cert.yaml`<br>
 Description: Delete a Trusted cert from the keystores<br>
-Variables: 
+Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
   - `github_issue` - The github issue number we want to update with our status on this job.
@@ -185,7 +221,7 @@ smtp_info:
 
 email_address:
   - Ross Kramer <kramerro@us.ibm.com>
-  - Faraz Ahmad <faraz@us.ibm.com>
+  - Faraz Ahmad <faraz@ibm.com>
 
 github_repo: "https://github.com/api/v3/repos/ibm-client-engineering/solution-mq-certificate-management"
 
@@ -226,7 +262,7 @@ sig_alg: "SHA256WithRSA"
 expire_time: 90
 ```
 
-We stored a lot of elements here in the global vars above. Primarily we do this so we can share the variables across multiple roles. These vars however can be very much localized into the role itself via `vars/main.yaml` or `defaults/main.yaml`. 
+We stored a lot of elements here in the global vars above. Primarily we do this so we can share the variables across multiple roles. These vars however can be very much localized into the role itself via `vars/main.yaml` or `defaults/main.yaml`.
 
 The important variables are `smtp_info` as these are the required vars for the `mail` module in ansible. This allows us to email out. Others are the `github_repo` path. This is necessary in order to update our associated github issue. The `github_issue` var and `email_address` var are just populated with default values that we overwrite with our `extra_vars`.
 
@@ -234,7 +270,7 @@ Ansible vault encryption is how we are protecting our passwords and tokens. Thes
 
 Once again, any variable set here can be overwritten with the `extra-vars` flag when running via commandline.
 
-Local Vars: 
+Local Vars:
 
 In our defaults dir we set some default vars. Currently it would look like this:
 
@@ -248,14 +284,20 @@ company_url: "https://www.ibm.com"
 company_logo: "https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-png-transparent-svg-vector-bie-supply-3.png"
 ```
 
-This lets us set a default URL and default company logo to use for our email templates. 
+This lets us set a default URL and default company logo to use for our email templates.
 
-## Security
-
-## Cost
-
-## Risks and Technical Debts
-
-## Testing
-
+# Security
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
+# Cost
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
+# Risks and Technical Debts
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
+# Testing
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
 # Architecture Decisions
+> **Note**
+>![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
