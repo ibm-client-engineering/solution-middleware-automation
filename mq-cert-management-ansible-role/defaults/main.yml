@@ -1,0 +1,7 @@
+---
+# defaults file for mq-cert-management
+
+MQM_BIN_PATH: "/opt/mqm/bin"
+
+company_url: "https://www.ibm.com"
+company_logo: "https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-png-transparent-svg-vector-bie-supply-3.png"
