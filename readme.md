@@ -17,13 +17,11 @@
 
 ## Deployment
 
-MQ Cert Managment
-=========
+### MQ Cert Management
 
 This role allows for simple certificate management in the local keystore on each node of MQ. This works for any RDQM cluster or standalone MQ host.
 
-Requirements
-------------
+### Requirements for the role
 
 At the moment this role requires a lot of specific settings in the inventory:
 
@@ -72,8 +70,7 @@ The `ansible_ssh_common_args` is used for ansible to connect if you are using a 
 
 When importing this role, it's important to also note that it is useful to have the following
 
-Role Tasks and Variables
---------------
+### Role Tasks and Variables
 
 When running this role from a Tower environment or running from cmdline, the following vars are required and/or overwriteable. This is a breakdown per task:
 
@@ -146,15 +143,11 @@ Description: This is a required task that is called via tags by any of the other
 
   Tags: `getinfo, getpubcert, certremove, addpubcert, listexpires, createcert, getallcerts`
 
-
-
-Dependencies
-------------
+### Dependencies
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
-Example Playbook
-----------------
+### Playbook Example
 
 A typical example of using this role would be to first import it via ansible-galaxy and then point a playbook to it.
 
@@ -177,6 +170,7 @@ And our playbook would look like this:
   roles:
   - role: mq-cert-management-role
 ```
+### Variables
 
 For our orchestrator we would want to set some group vars for this role, particularly ansible vault encrypted tokens or passwords. For our test environment we set our `group_vars/all/main.yaml` with the following variables:
 
@@ -255,8 +249,6 @@ company_logo: "https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-png-tr
 ```
 
 This lets us set a default URL and default company logo to use for our email templates. 
-
-
 
 ## Security
 
