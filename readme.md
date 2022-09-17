@@ -289,6 +289,12 @@ company_logo: "https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-png-tr
 
 This lets us set a default URL and default company logo to use for our email templates.
 
+### Examples of running the role in Ansible Tower
+
+The following is an example of running the role to collect all existing certs that exist in the keystore:
+![Collecting the key labels](https://user-images.githubusercontent.com/102995992/190835292-fe1b51ee-282d-4699-869a-60d158436548.gif)
+
+
 # Security
 > **Note**
 >![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
