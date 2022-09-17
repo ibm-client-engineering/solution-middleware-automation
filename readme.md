@@ -294,6 +294,12 @@ This lets us set a default URL and default company logo to use for our email tem
 The following is an example of running the role to collect all existing certs that exist in the keystore:
 ![Collecting the key labels](https://user-images.githubusercontent.com/102995992/190835292-fe1b51ee-282d-4699-869a-60d158436548.gif)
 
+This would return two emails, one for each cluster we checked:
+
+<img width="695" alt="email one" src="https://user-images.githubusercontent.com/102995992/190835529-629510b7-9a6f-4441-aede-4bea1f9d1f48.png">
+
+<img width="620" alt="email two" src="https://user-images.githubusercontent.com/102995992/190835534-8789e173-64d7-4dbe-a12e-54097105fc12.png">
+
 
 # Security
 > **Note**
