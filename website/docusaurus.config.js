@@ -12,13 +12,13 @@ const config = {
   themes: ['@docusaurus/theme-mermaid'],
   title: 'IBM Client Engineering',
   tagline: 'Build Faster. Together.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.ico',
 
   // Set the production url of your site here
   url: 'https://berretterry-ibm.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/solution-middleware-automation/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
