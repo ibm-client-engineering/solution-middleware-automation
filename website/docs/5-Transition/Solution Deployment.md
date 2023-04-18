@@ -75,8 +75,10 @@ When importing this role, it's important to also note that it is useful to have 
 
 When running this role from a Tower environment or running from cmdline, the following vars are required and/or overwriteable. This is a breakdown per task:
 
-**Task:** `mq-add-pub-cert.yaml`<br>
-Description: This task allows for adding a trusted cert to a keystore.<br>
+**Task:** `mq-add-pub-cert.yaml`
+
+Description: This task allows for adding a trusted cert to a keystore.
+
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `cert_body` - The actual cert itself.
@@ -85,30 +87,38 @@ Variables:
 
 Tags: `addpubcert`
 
-**Task:** `mq-create-keystore.yaml`<br>
-Description: This task will create a new keystore for a queue manager and configure the qm to use it.<br>
+**Task:** `mq-create-keystore.yaml`
+
+Description: This task will create a new keystore for a queue manager and configure the qm to use it.
+
 Variables:
   - `email_address` - The email address to send any updates for this task.
   - `github_issue` - The github issue number we want to update with our status on this job.
 
 Tags: `createkeystore`
 
-**Task:** `mq-getcerts.yaml`<br>
-Description: Get a list of all certs that exist in a keystore and send a formatted email with them broken down between Trusted, Personal, and any generated CSRs.<br>
+**Task:** `mq-getcerts.yaml`
+
+Description: Get a list of all certs that exist in a keystore and send a formatted email with them broken down between Trusted, Personal, and any generated CSRs.
+
 Variables:
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `getallcerts`
 
-**Task:** `mq-get-cert-expirations.yaml`<br>
-Description: Get a list of all certs that have imminent or expired dates.<br>
+**Task:** `mq-get-cert-expirations.yaml`
+
+Description: Get a list of all certs that have imminent or expired dates.
+
 Variables:
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `listexpires`
 
-**Task:** `mq-create-cert.yaml`<br>
-Description: Create a new personal cert for the keystore and then extract and email the public cert so we can add it to any SSL peer and update any associated Github issue number with what we've done.<br>
+**Task:** `mq-create-cert.yaml`
+
+Description: Create a new personal cert for the keystore and then extract and email the public cert so we can add it to any SSL peer and update any associated Github issue number with what we've done.
+
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
@@ -116,16 +126,18 @@ Variables:
 
 Tags: `createcert`
 
-**Task:** `mq-get-pub-cert.yaml`<br>
-Description: Extract and email the trusted cert for the named cert label we give.<br>
+**Task:** `mq-get-pub-cert.yaml'
+
+Description: Extract and email the trusted cert for the named cert label we give.
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `getpubcert`
 
-**Task:** `mq-remove-pub-cert.yaml`<br>
-Description: Delete a Trusted cert from the keystores<br>
+**Task:** `mq-remove-pub-cert.yaml`
+
+Description: Delete a Trusted cert from the keystores
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
@@ -133,7 +145,8 @@ Variables:
 
 Tags: `certremove`
 
-**Task:** `mq-get-info.yaml`<br>
+**Task:** `mq-get-info.yaml`
+
 Description: This is a required task that is called via tags by any of the other tasks. It retrieves information from the keystore that is used by the other tasks. This task isn't typically called directly. The type of info it returns are as such:
   - Pulls the current keyfile path that is set in the queue manager
   - Pulls the current cert label that is set in the queue manager
@@ -260,7 +273,7 @@ This would return two emails, one for each cluster we checked:
 
 |||
 |--------|--------|
-|<img width="695" alt="email one" src="https://user-images.githubusercontent.com/102995992/190835529-629510b7-9a6f-4441-aede-4bea1f9d1f48.png">|<img width="620" alt="email two" src="https://user-images.githubusercontent.com/102995992/190835534-8789e173-64d7-4dbe-a12e-54097105fc12.png">|
+|<img width="695" alt="email one" src="https://user-images.githubusercontent.com/102995992/190835529-629510b7-9a6f-4441-aede-4bea1f9d1f48.png"/>|<img width="620" alt="email two" src="https://user-images.githubusercontent.com/102995992/190835534-8789e173-64d7-4dbe-a12e-54097105fc12.png"/>|
 
 This would be an example of running the role to add a public cert to the keystores:
 ![Adding public cert](https://user-images.githubusercontent.com/102995992/190836263-7cf5cc6d-706b-4ad5-8521-38f2f3cee151.gif)
@@ -269,10 +282,10 @@ This would also return two emails, one for each cluster we checked:
 
 |||
 |--------|--------|
-|<img width="601" alt="Email one" src="https://user-images.githubusercontent.com/102995992/190836329-802c4fc8-b470-4397-855e-c4833ad15e3d.png">|<img width="608" alt="Email two" src="https://user-images.githubusercontent.com/102995992/190836331-9a258fdd-b460-4516-bd33-87649598391d.png">|
+|<img width="601" alt="Email one" src="https://user-images.githubusercontent.com/102995992/190836329-802c4fc8-b470-4397-855e-c4833ad15e3d.png"/>|<img width="608" alt="Email two" src="https://user-images.githubusercontent.com/102995992/190836331-9a258fdd-b460-4516-bd33-87649598391d.png"/>|
 
 And furthermore since we specified a github issue, that issue would also be updated with two comments:
 
 |||
 |--------|--------|
-|<img width="600" alt="Comment one" src="https://user-images.githubusercontent.com/102995992/190836389-791bc1a2-0943-48a3-a896-42385e1864ff.png">|<img width="600" alt="Comment two" src="https://user-images.githubusercontent.com/102995992/190836395-6ff7904d-1181-4376-8b2b-feeb1106022f.png">|
+|<img width="600" alt="Comment one" src="https://user-images.githubusercontent.com/102995992/190836389-791bc1a2-0943-48a3-a896-42385e1864ff.png"/>|<img width="600" alt="Comment two" src="https://user-images.githubusercontent.com/102995992/190836395-6ff7904d-1181-4376-8b2b-feeb1106022f.png"/>|
