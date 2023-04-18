@@ -1,0 +1,2 @@
+# Background and Business Problem
+A valued Financial Services customer has approached IBM Client Engineering to formulate a point of view on **automating** manual IT Operations tasks for their IBM middleware landscape. Today, these manual tasks can be error-prone and time consuming.
