@@ -1,4 +1,10 @@
-### MQ Cert Management
+---
+id: adopt
+sidebar_position: 1
+title: Adopt
+---
+
+## MQ Cert Management
 
 > **Warning**
 > To prove Ansible's capability to solve the customer's use case, IBM Client Engineering > has built the following Ansible Role for demo purposes. This code and structure is

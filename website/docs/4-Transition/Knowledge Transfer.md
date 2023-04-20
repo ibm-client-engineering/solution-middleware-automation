@@ -1,4 +1,10 @@
-### Playbook Example
+---
+id: knowledge
+sidebar_position: 2
+title: Knowledge Transfer
+---
+
+## Playbook Example
 
 A typical example of using this role would be to first import it via ansible-galaxy and then point a playbook to it.
 
