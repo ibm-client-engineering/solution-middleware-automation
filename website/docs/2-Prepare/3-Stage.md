@@ -1,27 +1,3 @@
-# Solution Overview
-
-After gathering data on all the use-cases, this solution will use Ansible as the primary driver for automating operations.
-![image](https://user-images.githubusercontent.com/95059/190798762-1aa5b297-dab9-420d-8e38-5743eab10d3a.png)
-
-> **Note**
->![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283ce031ca.svg) Work in Progress!
-
-## Solution Deployment
-
-> **Note**
->![construction](https://user-images.githubusercontent.com/95059/190730003-07b8b678-ebe8-4164-ac45-fb283c
-
-### MQ Cert Management
-
-> **Warning**
-> To prove Ansible's capability to solve the customer's use case, IBM Client Engineering > has built the following Ansible Role for demo purposes. This code and structure is
-> going to evolve and change as the engagement progresses.
-
-> **Note**
->** The certification management code is located in the "mq-cert-management-ansible-role" folder in this repository. [Here is a direct link](https://github.com/ibm-client-engineering/solution-middleware-automation/tree/main/mq-cert-management-ansible-role)
-
-This role allows for simple certificate management in the local keystore on each node of MQ. This works for any RDQM cluster or standalone MQ host.
-
 ### Requirements for the role
 
 At the moment this role requires a lot of specific settings in the inventory:
@@ -75,10 +51,8 @@ When importing this role, it's important to also note that it is useful to have 
 
 When running this role from a Tower environment or running from cmdline, the following vars are required and/or overwriteable. This is a breakdown per task:
 
-**Task:** `mq-add-pub-cert.yaml`
-
-Description: This task allows for adding a trusted cert to a keystore.
-
+**Task:** `mq-add-pub-cert.yaml`<br>
+Description: This task allows for adding a trusted cert to a keystore.<br>
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `cert_body` - The actual cert itself.
@@ -87,38 +61,30 @@ Variables:
 
 Tags: `addpubcert`
 
-**Task:** `mq-create-keystore.yaml`
-
-Description: This task will create a new keystore for a queue manager and configure the qm to use it.
-
+**Task:** `mq-create-keystore.yaml`<br>
+Description: This task will create a new keystore for a queue manager and configure the qm to use it.<br>
 Variables:
   - `email_address` - The email address to send any updates for this task.
   - `github_issue` - The github issue number we want to update with our status on this job.
 
 Tags: `createkeystore`
 
-**Task:** `mq-getcerts.yaml`
-
-Description: Get a list of all certs that exist in a keystore and send a formatted email with them broken down between Trusted, Personal, and any generated CSRs.
-
+**Task:** `mq-getcerts.yaml`<br>
+Description: Get a list of all certs that exist in a keystore and send a formatted email with them broken down between Trusted, Personal, and any generated CSRs.<br>
 Variables:
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `getallcerts`
 
-**Task:** `mq-get-cert-expirations.yaml`
-
-Description: Get a list of all certs that have imminent or expired dates.
-
+**Task:** `mq-get-cert-expirations.yaml`<br>
+Description: Get a list of all certs that have imminent or expired dates.<br>
 Variables:
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `listexpires`
 
-**Task:** `mq-create-cert.yaml`
-
-Description: Create a new personal cert for the keystore and then extract and email the public cert so we can add it to any SSL peer and update any associated Github issue number with what we've done.
-
+**Task:** `mq-create-cert.yaml`<br>
+Description: Create a new personal cert for the keystore and then extract and email the public cert so we can add it to any SSL peer and update any associated Github issue number with what we've done.<br>
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
@@ -126,18 +92,16 @@ Variables:
 
 Tags: `createcert`
 
-**Task:** `mq-get-pub-cert.yaml'
-
-Description: Extract and email the trusted cert for the named cert label we give.
+**Task:** `mq-get-pub-cert.yaml`<br>
+Description: Extract and email the trusted cert for the named cert label we give.<br>
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
 
 Tags: `getpubcert`
 
-**Task:** `mq-remove-pub-cert.yaml`
-
-Description: Delete a Trusted cert from the keystores
+**Task:** `mq-remove-pub-cert.yaml`<br>
+Description: Delete a Trusted cert from the keystores<br>
 Variables:
   - `cert_label` - The label the cert will be known by in the keystore.
   - `email_address` - The email address to send any updates for this task.
@@ -145,8 +109,7 @@ Variables:
 
 Tags: `certremove`
 
-**Task:** `mq-get-info.yaml`
-
+**Task:** `mq-get-info.yaml`<br>
 Description: This is a required task that is called via tags by any of the other tasks. It retrieves information from the keystore that is used by the other tasks. This task isn't typically called directly. The type of info it returns are as such:
   - Pulls the current keyfile path that is set in the queue manager
   - Pulls the current cert label that is set in the queue manager
@@ -157,33 +120,9 @@ Description: This is a required task that is called via tags by any of the other
 
   Tags: `getinfo, getpubcert, certremove, addpubcert, listexpires, createcert, getallcerts`
 
-  ### Dependencies
+### Dependencies
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-### Playbook Example
-
-A typical example of using this role would be to first import it via ansible-galaxy and then point a playbook to it.
-
-An example entry in your requirements file in your roles directory:
-
-```
-- name MQ Certificate Management
-  src: https://github.com/client-engineering-devops/mq-cert-management-role.git
-  name: mq-cert-managment-role
-  scm: git
-  version: main
-```
-And our playbook would look like this:
-
-```
-- hosts: washington,dallas
-  become: true
-  become_user: root
-  gather_facts: true
-  roles:
-  - role: mq-cert-management-role
-```
 
 ### Variables
 
@@ -264,28 +203,3 @@ company_logo: "https://www.freepnglogos.com/uploads/ibm-logo-png/ibm-logo-png-tr
 ```
 
 This lets us set a default URL and default company logo to use for our email templates.
-### Examples of running the role in Ansible Tower
-
-The following is an example of running the role to collect all existing certs that exist in the keystore:
-![Collecting the key labels](https://user-images.githubusercontent.com/102995992/190835292-fe1b51ee-282d-4699-869a-60d158436548.gif)
-
-This would return two emails, one for each cluster we checked:
-
-|||
-|--------|--------|
-|<img width="695" alt="email one" src="https://user-images.githubusercontent.com/102995992/190835529-629510b7-9a6f-4441-aede-4bea1f9d1f48.png"/>|<img width="620" alt="email two" src="https://user-images.githubusercontent.com/102995992/190835534-8789e173-64d7-4dbe-a12e-54097105fc12.png"/>|
-
-This would be an example of running the role to add a public cert to the keystores:
-![Adding public cert](https://user-images.githubusercontent.com/102995992/190836263-7cf5cc6d-706b-4ad5-8521-38f2f3cee151.gif)
-
-This would also return two emails, one for each cluster we checked:
-
-|||
-|--------|--------|
-|<img width="601" alt="Email one" src="https://user-images.githubusercontent.com/102995992/190836329-802c4fc8-b470-4397-855e-c4833ad15e3d.png"/>|<img width="608" alt="Email two" src="https://user-images.githubusercontent.com/102995992/190836331-9a258fdd-b460-4516-bd33-87649598391d.png"/>|
-
-And furthermore since we specified a github issue, that issue would also be updated with two comments:
-
-|||
-|--------|--------|
-|<img width="600" alt="Comment one" src="https://user-images.githubusercontent.com/102995992/190836389-791bc1a2-0943-48a3-a896-42385e1864ff.png"/>|<img width="600" alt="Comment two" src="https://user-images.githubusercontent.com/102995992/190836395-6ff7904d-1181-4376-8b2b-feeb1106022f.png"/>|
